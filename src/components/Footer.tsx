@@ -10,10 +10,11 @@ import {
   Menu,
   MenuButton,
   MenuItem,
-  MenuList
+  MenuList,
+  Text
 } from '@chakra-ui/react';
 import React from 'react';
-import { maxWidth, minWidth } from 'src/theme/theme';
+import { maxFooterWidth, maxWidth, minWidth } from 'src/theme/theme';
 import CartIcon from '../assets/icons/icon-cart.svg';
 import UserIcon from '../assets/icons/icon-user.svg';
 import Logo from '../assets/logos/logo-md.svg';
@@ -22,7 +23,7 @@ import GooglePlay from '../assets/socials/google-play.svg';
 
 interface HeaderProps {}
 
-const Header: React.FC<HeaderProps> = ({}) => {
+const Footer: React.FC<HeaderProps> = ({}) => {
   return (
     <Box bg="xpressGrey">
       <Flex
@@ -30,13 +31,11 @@ const Header: React.FC<HeaderProps> = ({}) => {
         direction="column"
         align="center"
         borderTop="5px solid"
-        borderTopColor="xpressOrange"
-        borderBottom="5px solid"
-        borderBottomColor="xpressRuby"
+        borderTopColor="xpressRuby"
       >
         <Flex
-          w={`clamp(${minWidth}, 100%, ${maxWidth})`}
-          h="90px"
+          w={`clamp(${minWidth}, 100%, ${maxFooterWidth})`}
+          h="436px"
           px="20px"
           align="center"
           gap="16px"
@@ -56,26 +55,22 @@ const Header: React.FC<HeaderProps> = ({}) => {
           </Flex>
         </Flex>
       </Flex>
-      <Flex w="100%" direction="column" align="center">
-        <Flex
-          w={`clamp(${minWidth}, 100%, ${maxWidth})`}
-          h="50px"
-          px="20px"
-          align="center"
-          gap="80px"
-          fontWeight="800"
-          color="xpressRuby"
-        >
-          <Link>Cards</Link>
-          <Link>Grocery</Link>
-          <Link>Telecom</Link>
-        </Flex>
+      <Flex
+        w="100%"
+        p="8px"
+        align="center"
+        justify="center"
+        bg="xpressOrange"
+        color="white"
+        fontWeight="700"
+      >
+        <Text>All Rights Reserved &#169; 2021</Text>
       </Flex>
     </Box>
   );
 };
 
-export default Header;
+export default Footer;
 
 const SearchBar: React.FC<{}> = () => {
   return (

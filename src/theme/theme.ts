@@ -1,5 +1,9 @@
 import { extendTheme } from '@chakra-ui/react';
 
+export const maxWidth = '1580px';
+export const maxFooterWidth = '1280px';
+export const minWidth = '300px';
+
 export const theme = extendTheme({
   fonts: {
     heading: 'Muli, Mulish, Segoe UI, sans-serif',
@@ -32,6 +36,18 @@ export const theme = extendTheme({
       700: '#740a2a',
       800: '#470319',
       900: '#1d0008'
+    },
+    xpressGreyScheme: {
+      50: '#f2f2f2',
+      100: '#d9d9d9',
+      200: '#bfbfbf',
+      300: '#a6a6a6',
+      400: '#8c8c8c',
+      500: '#737373',
+      600: '#595959',
+      700: '#404040',
+      800: '#262626',
+      900: '#0d0d0d'
     }
   }
 });
