@@ -1,11 +1,14 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import { maxBodyWidth, minWidth } from 'src/theme/theme';
+import ChatHelp from './landing/ChatHelp';
 import Hero from './landing/Hero';
+import PopularProducts from './landing/PopularProducts';
+import RepeatRecent from './landing/RepeatRecent';
 
 interface LandingProps {}
 
-const Landing: React.FC<LandingProps> = ({}) => {
+const Landing: React.FC<LandingProps> = () => {
   return (
     <Flex
       w={`clamp(${minWidth}, 100%, ${maxBodyWidth})`}
@@ -14,10 +17,12 @@ const Landing: React.FC<LandingProps> = ({}) => {
       px="20px"
       direction="column"
       align="center"
+      gap="64px"
     >
       <Hero />
-      {/* PopularProducts */}
-      {/* RepeatProducts */}
+      <PopularProducts />
+      <RepeatRecent />
+      <ChatHelp />
     </Flex>
   );
 };

@@ -8,11 +8,11 @@ import { Providers } from './context/providers';
 function App() {
   return (
     <Providers>
-      <Flex direction="column" minH="100vh">
+      <Box minH="100vh">
         <Header />
         <Landing />
         <Footer />
-      </Flex>
+      </Box>
     </Providers>
   );
 }

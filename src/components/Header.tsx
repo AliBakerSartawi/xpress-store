@@ -22,9 +22,9 @@ import GooglePlay from '../assets/socials/google-play.svg';
 
 interface HeaderProps {}
 
-const Header: React.FC<HeaderProps> = ({}) => {
+const Header: React.FC<HeaderProps> = () => {
   return (
-    <Box bg="xpressGrey">
+    <Box bg="xpressGrey" position="sticky" top="0px" zIndex="sticky">
       <Flex
         w="100%"
         direction="column"
@@ -99,7 +99,7 @@ const SearchBar: React.FC<{}> = () => {
   );
 };
 
-const LanguageSwitcher: React.FC<{}> = ({}) => {
+const LanguageSwitcher: React.FC<{}> = () => {
   return (
     <Menu>
       <MenuButton as={LanguageSwitcherButton} leftIcon={<TriangleDownIcon />}>

@@ -16,7 +16,7 @@ import Discover from '../assets/payment-methods/discover.svg';
 
 interface HeaderProps {}
 
-const Footer: React.FC<HeaderProps> = ({}) => {
+const Footer: React.FC<HeaderProps> = () => {
   return (
     <Box bg="xpressGrey">
       <Flex
