@@ -13,7 +13,7 @@ import {
   MenuList
 } from '@chakra-ui/react';
 import React from 'react';
-import { maxWidth, minWidth } from 'src/theme/theme';
+import { maxHeaderWidth, minWidth } from 'src/theme/theme';
 import CartIcon from '../assets/icons/icon-cart.svg';
 import UserIcon from '../assets/icons/icon-user.svg';
 import Logo from '../assets/logos/logo-md.svg';
@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
         borderBottomColor="xpressRuby"
       >
         <Flex
-          w={`clamp(${minWidth}, 100%, ${maxWidth})`}
+          w={`clamp(${minWidth}, 100%, ${maxHeaderWidth})`}
           h="90px"
           px="20px"
           align="center"
@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
       </Flex>
       <Flex w="100%" direction="column" align="center">
         <Flex
-          w={`clamp(${minWidth}, 100%, ${maxWidth})`}
+          w={`clamp(${minWidth}, 100%, ${maxHeaderWidth})`}
           h="50px"
           px="20px"
           align="center"
@@ -113,7 +113,7 @@ const LanguageSwitcher: React.FC<{}> = ({}) => {
   );
 };
 
-const LanguageSwitcherButton = React.forwardRef<any, ButtonProps>(
+const LanguageSwitcherButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
     return (
       <Button
