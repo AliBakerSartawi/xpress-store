@@ -16,15 +16,15 @@ export const theme = extendTheme({
     xpressGrey: '#EEEEEE',
     xpressOrangeScheme: {
       50: '#ffeddd',
-      100: '#ffceb0',
-      200: '#ffb07f',
-      300: '#ff904d',
-      400: '#fe711c',
-      500: '#e55802',
-      600: '#b34300',
-      700: '#813000',
-      800: '#4f1c00',
-      900: '#200700'
+      100: '#ffeddd',
+      200: '#ffceb0',
+      300: '#ffb07f',
+      400: '#ff904d',
+      500: '#fe711c',
+      600: '#e55802',
+      700: '#b34300',
+      800: '#813000',
+      900: '#4f1c00'
     },
     xpressRubyScheme: {
       50: '#ffe5ef',

@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import Landing from './components/Landing';
 import { Providers } from './context/providers';
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <Providers>
       <Flex direction="column" minH="100vh">
         <Header />
-        <Box flex="1" />
+        <Landing />
         <Footer />
       </Flex>
     </Providers>
