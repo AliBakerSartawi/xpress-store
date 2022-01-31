@@ -2,7 +2,7 @@ import { extendTheme } from '@chakra-ui/react';
 
 export const maxHeaderWidth = '1580px';
 export const maxBodyWidth = '1580px';
-export const maxFooterWidth = '1280px';
+export const maxFooterWidth = '1240px';
 export const minWidth = '300px';
 
 export const theme = extendTheme({
