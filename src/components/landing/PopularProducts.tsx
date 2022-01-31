@@ -10,7 +10,8 @@ import {
   WrapItem
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { Item } from 'src/types/types';
+import { useCart } from 'src/context/cart';
+import { CartItem, Item } from 'src/types/types';
 import Hoodie from '../../assets/hoodie.png';
 
 interface PopularProductsProps {}
@@ -44,6 +45,11 @@ const Card: React.FC<{ item: Item }> = ({
   item: { id, img, name, size, previousPrice, price }
 }) => {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () =>
+    addToCart({ id, img, name, price, size, quantity });
+
   return (
     <Flex
       direction="column"
@@ -139,6 +145,7 @@ const Card: React.FC<{ item: Item }> = ({
           borderRadius="initial"
           px="20px"
           _focus={{ border: 'none' }}
+          onClick={handleAddToCart}
         >
           ADD
         </Button>

@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   ButtonProps,
+  Center,
   Flex,
   Image,
   Input,
@@ -13,6 +14,7 @@ import {
   MenuList
 } from '@chakra-ui/react';
 import React from 'react';
+import { useCart } from 'src/context/cart';
 import { maxHeaderWidth, minWidth } from 'src/theme/theme';
 import CartIcon from '../assets/icons/icon-cart.svg';
 import UserIcon from '../assets/icons/icon-user.svg';
@@ -23,6 +25,7 @@ import GooglePlay from '../assets/socials/google-play.svg';
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
+  const { cart } = useCart();
   return (
     <Box bg="xpressGrey" position="sticky" top="0px" zIndex="sticky">
       <Flex
@@ -51,7 +54,27 @@ const Header: React.FC<HeaderProps> = () => {
 
           <LanguageSwitcher />
           <Flex align="center" justify="end" gap="40px" paddingStart="24px">
-            <Image src={CartIcon} alt="Cart Icon" h="24px" />
+            <Box position="relative">
+              <Image src={CartIcon} alt="Cart Icon" h="24px" />
+              {cart && (
+                <Center
+                  position="absolute"
+                  bg="red.400"
+                  h="24px"
+                  w="24px"
+                  borderRadius="50%"
+                  color="white"
+                  lineHeight="1"
+                  fontSize="12px"
+                  top="-12px"
+                  insetEnd="-12px"
+                  border="2px solid"
+                  borderColor="xpressGrey"
+                >
+                  {cart.length}
+                </Center>
+              )}
+            </Box>
             <Image src={UserIcon} alt="User Icon" h="24px" />
           </Flex>
         </Flex>
