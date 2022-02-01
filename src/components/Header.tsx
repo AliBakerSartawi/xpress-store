@@ -1,9 +1,16 @@
-import { SearchIcon, TriangleDownIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, SearchIcon, TriangleDownIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
   ButtonProps,
   Center,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
   Flex,
   Image,
   Input,
@@ -19,14 +26,15 @@ import {
   PopoverFooter,
   PopoverTrigger,
   Text,
-  VStack
+  useDisclosure,
+  useMediaQuery
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useCart } from 'src/context/cart';
 import { maxHeaderWidth, minWidth } from 'src/theme/theme';
+import DeleteItemIcon from '../assets/icons/delete-item-icon.svg';
 import CartIcon from '../assets/icons/icon-cart.svg';
 import UserIcon from '../assets/icons/icon-user.svg';
-import DeleteItemIcon from '../assets/icons/delete-item-icon.svg';
 import Logo from '../assets/logos/logo-md.svg';
 import AppStore from '../assets/socials/app-store.svg';
 import GooglePlay from '../assets/socials/google-play.svg';
@@ -34,6 +42,8 @@ import GooglePlay from '../assets/socials/google-play.svg';
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
+  const [isLargerThat992] = useMediaQuery('(min-width: 992px)');
+
   return (
     <Box bg="xpressGrey" position="sticky" top="0px" zIndex="sticky">
       <Flex
@@ -52,19 +62,28 @@ const Header: React.FC<HeaderProps> = () => {
           align="center"
           gap="16px"
         >
-          <Image src={Logo} alt="Xpress Logo" />
+          <Image src={Logo} alt="Xpress Logo" h={['30px', '40px', 'initial']} />
           <SearchBar />
-          <Image src={AppStore} alt="App Store" />
-          <Image src={GooglePlay} alt="Google Play" />
-
-          {/* Separator */}
-          <Box w="1px" h="26px" bg="xpressGreyScheme.300" borderRadius="4px" />
-
-          <LanguageSwitcher />
-          <Flex align="center" justify="end" gap="40px" paddingStart="24px">
-            <Cart />
-            <Image src={UserIcon} alt="User Icon" h="24px" />
-          </Flex>
+          {isLargerThat992 ? (
+            <Flex align="center" gap="16px">
+              <Image src={AppStore} alt="App Store" />
+              <Image src={GooglePlay} alt="Google Play" />
+              {/* Separator */}
+              <Box
+                w="1px"
+                h="26px"
+                bg="xpressGreyScheme.300"
+                borderRadius="4px"
+              />
+              <LanguageSwitcher />
+              <Flex align="center" justify="end" gap="40px" paddingStart="24px">
+                <Cart />
+                <Image src={UserIcon} alt="User Icon" h="24px" />
+              </Flex>
+            </Flex>
+          ) : (
+            <BurgerMenu />
+          )}
         </Flex>
       </Flex>
       <Flex w="100%" direction="column" align="center">
@@ -87,6 +106,57 @@ const Header: React.FC<HeaderProps> = () => {
 };
 
 export default Header;
+
+const BurgerMenu: React.FC<{}> = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+      <Cart />
+      <Button
+        bg="white"
+        variant="outline"
+        colorScheme="whiteAlpha"
+        _focus={{ border: 'none' }}
+        onClick={onOpen}
+      >
+        <HamburgerIcon color="xpressGreyScheme.600" />
+      </Button>
+      <Drawer isOpen={isOpen} placement="start" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton _focus={{ border: 'none' }} />
+          <DrawerHeader pb="40px">
+            <Image src={Logo} alt="Xpress Logo" h="40px" />
+          </DrawerHeader>
+
+          <DrawerBody>
+            <Flex
+              direction="column"
+              h="95%"
+              align="start"
+              justify="space-between"
+              gap="16px"
+            >
+              <Flex direction="column" align="start" gap="16px">
+                <Flex align="end" gap="8px">
+                  <Image src={UserIcon} alt="User Icon" h="24px" />
+                  <Text fontWeight="700" color="xpressRuby" lineHeight="1">
+                    Profile
+                  </Text>
+                </Flex>
+                <LanguageSwitcher />
+              </Flex>
+              <Flex direction="column" align="start" gap="16px">
+                <Image src={AppStore} alt="App Store" />
+                <Image src={GooglePlay} alt="Google Play" />
+              </Flex>
+            </Flex>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+};
 
 const SearchBar: React.FC<{}> = () => {
   return (

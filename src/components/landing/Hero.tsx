@@ -19,21 +19,34 @@ const Hero: React.FC<HeroProps> = () => {
       >
         {list.map((_, i) => (
           <Box key={i} position="relative">
-            <Image src={HeroImage} alt="Hero Image" />
+            <Image
+              src={HeroImage}
+              alt="Hero Image"
+              h={['50vh', null, 'initial']}
+              objectFit="cover"
+              borderRadius="20px"
+            />
             <Flex
               h="100%"
               position="absolute"
               direction="column"
               justify="center"
               top="0px"
-              insetStart="100px"
+              insetStart={['32px', '64px', '100px']}
               color="xpressRuby"
               gap="4px"
             >
-              <Heading fontSize="48px" fontWeight="800">
+              <Heading
+                fontSize={['32px', null, '40px', '48px']}
+                fontWeight="800"
+              >
                 70% Off
               </Heading>
-              <Text fontSize="30px" fontWeight="300" mt="-16px">
+              <Text
+                fontSize={['22px', null, '26px', '30px']}
+                fontWeight="300"
+                mt="-16px"
+              >
                 On everything today
               </Text>
               <CallToActionButton>Get Now</CallToActionButton>
@@ -65,12 +78,15 @@ const CallToActionButton: React.FC<{ children?: ReactNode }> = ({
 }) => {
   return (
     <Button
-      borderRadius="20px"
+      borderRadius="24px"
       colorScheme="xpressOrangeScheme"
       width="fit-content"
       height="fit-content"
-      p="10px"
-      fontSize="20px"
+      px="10px"
+      py="12px"
+      fontSize={['18px', null, '20px', '24px']}
+      lineHeight="1"
+      boxShadow="md"
       _focus={{ border: 'none' }}
     >
       {children}

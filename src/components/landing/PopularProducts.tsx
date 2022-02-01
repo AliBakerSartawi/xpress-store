@@ -168,7 +168,7 @@ const itemsList = (): Item[] => [
   {
     id: 1,
     img: Hoodie,
-    name: "Autumn women's new high-waist slim hoodie",
+    name: "Autumn women's new high-waist slim hoodie - Black",
     size: '0000',
     previousPrice: 40,
     price: 30

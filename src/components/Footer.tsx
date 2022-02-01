@@ -1,7 +1,16 @@
-import { Box, Flex, Heading, Image, Link, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Image,
+  Link,
+  Text,
+  useMediaQuery
+} from '@chakra-ui/react';
 import React from 'react';
 import { maxFooterWidth, minWidth } from 'src/theme/theme';
 import Logo from '../assets/logos/logo-lg.svg';
+import LogoMd from '../assets/logos/logo-md.svg';
 import AppStore from '../assets/socials/app-store.svg';
 import Facebook from '../assets/socials/facebook.svg';
 import GooglePlay from '../assets/socials/google-play.svg';
@@ -17,11 +26,16 @@ import Discover from '../assets/payment-methods/discover.svg';
 interface HeaderProps {}
 
 const Footer: React.FC<HeaderProps> = () => {
+  const [isLargerThan992, isLargerThan1280] = useMediaQuery([
+    '(min-width: 992px)',
+    '(min-width: 1280px)'
+  ]);
+
   return (
     <Box bg="xpressGrey">
       <Flex
         w="100%"
-        h="400px"
+        py="80px"
         direction="column"
         align="center"
         justify="center"
@@ -29,14 +43,18 @@ const Footer: React.FC<HeaderProps> = () => {
         borderTopColor="xpressRuby"
       >
         <Flex
-          w={`clamp(${minWidth}, 100%, ${maxFooterWidth})`}
-          h="50%"
+          w={[
+            `clamp(${minWidth}, 50%, ${maxFooterWidth})`,
+            null,
+            `clamp(${minWidth}, 100%, ${maxFooterWidth})`
+          ]}
           px="20px"
+          direction={['column', null, 'row']}
           align="start"
           justify="space-between"
           gap="64px"
         >
-          <Image src={Logo} alt="Xpress Logo" />
+          <Image src={isLargerThan992 ? Logo : LogoMd} alt="Xpress Logo" />
           <NavigateSection />
           <InformationSection />
           <SocialsAndPayment />
@@ -124,17 +142,25 @@ const SocialsAndPayment: React.FC<{}> = () => {
           </Link>
         </Flex>
       </Flex>
-      <Flex gap="4px">
+      <Flex
+        gap="4px"
+        direction={['column', null, null, null, 'row']}
+        align={['start', null, null, null, 'center']}
+      >
         <Link>
-          <Image src={AppStore} alt="App Store" />
+          <Image
+            src={AppStore}
+            alt="App Store"
+            w={['100px', null, null, null, '105px']}
+          />
         </Link>
         <Link>
-          <Image src={GooglePlay} alt="Google Play" />
+          <Image src={GooglePlay} alt="Google Play" w="100px" />
         </Link>
       </Flex>
       <Flex direction="column" gap="8px">
         <Heading fontSize="14px">PAYMENT METHODS</Heading>
-        <Flex gap="4px">
+        <Flex gap="4px" wrap="wrap">
           <Image src={Visa} alt="Visa" />
           <Image src={MasterCard} alt="MasterCard" />
           <Image src={AmericanExpress} alt="AmericanExpress" />

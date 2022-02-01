@@ -1,9 +1,10 @@
 import { extendTheme } from '@chakra-ui/react';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 export const maxHeaderWidth = '1580px';
 export const maxBodyWidth = '1580px';
 export const maxFooterWidth = '1240px';
-export const minWidth = '300px';
+export const minWidth = '250px';
 
 export const theme = extendTheme({
   fonts: {
@@ -50,5 +51,12 @@ export const theme = extendTheme({
       800: '#262626',
       900: '#0d0d0d'
     }
-  }
+  },
+  breakpoints: createBreakpoints({
+    sm: '30em', // 480px
+    md: '48em', // 768px
+    lg: '62em', // 992px
+    xl: '80em', // 1280px
+    '2xl': '96em' // 1536px
+  })
 });
