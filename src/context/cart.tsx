@@ -15,7 +15,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   // Actions
   const addToCart = (item: CartItem) => {
-    const { id, quantity } = item
+    const { id, quantity } = item;
     if (!cart) {
       setCart([item]);
     } else {
@@ -33,8 +33,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const removeFromCart = (id: number) => {
+    if (cart) {
+      const newCart = cart.filter((item) => item.id !== id);
+      setCart(newCart.length ? newCart : null);
+    }
+  };
+
+  const actions = {
+    addToCart,
+    removeFromCart
+  };
+
   useEffect(() => {
-    console.log(cart);
     setSubtotal(
       cart
         ? cart.reduce((a, { price, quantity }) => {
@@ -45,12 +56,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   }, [cart]);
 
-  useEffect(() => {
-    console.log(subtotal);
-  }, [subtotal]);
-
   return (
-    <CartContext.Provider value={{ cart, setCart, subtotal, addToCart }}>
+    <CartContext.Provider value={{ cart, setCart, subtotal, actions }}>
       {children}
     </CartContext.Provider>
   );

@@ -1,7 +1,4 @@
-import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import {
-  Button,
-  Center,
   Flex,
   Heading,
   Image,

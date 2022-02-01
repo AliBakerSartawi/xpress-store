@@ -22,5 +22,8 @@ export interface CartContext {
   cart: CartItem[] | null;
   setCart: Dispatch<SetStateAction<CartItem[] | null>>;
   subtotal: number;
-  addToCart: (item: CartItem) => void
+  actions: {
+    addToCart: (item: CartItem) => void
+    removeFromCart: (id: number) => void
+  }
 }

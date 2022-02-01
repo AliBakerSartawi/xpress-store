@@ -45,10 +45,10 @@ const Card: React.FC<{ item: Item }> = ({
   item: { id, img, name, size, previousPrice, price }
 }) => {
   const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useCart();
+  const { actions } = useCart();
 
   const handleAddToCart = () =>
-    addToCart({ id, img, name, price, size, quantity });
+    actions.addToCart({ id, img, name, price, size, quantity });
 
   return (
     <Flex
@@ -72,8 +72,18 @@ const Card: React.FC<{ item: Item }> = ({
         gap="8px"
         color="xpressGreyScheme.500"
       >
-        <Text lineHeight="1" fontSize="19px">
-          {name.slice(0, 34) + (name.length > 34 ? '...' : '')}
+        <Text
+          lineHeight="1.2"
+          fontSize="19px"
+          sx={{
+            maxWidth: '240px',
+            display: '-webkit-box',
+            WebkitLineClamp: '2',
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden'
+          }}
+        >
+          {name}
         </Text>
         <Text fontSize="15px" fontWeight="300">
           Size : {size}
